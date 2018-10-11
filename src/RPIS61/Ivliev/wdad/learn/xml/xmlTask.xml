@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<housekeeper>
+
+
+    <tariffs>
+        <coldwater>44.2</coldwater>
+        <hotwater>12.5</hotwater>
+        <electricity>4456</electricity>
+        <gas>78</gas>
+    </tariffs>
+
+    <building street="Lenin" number="2" flatsquntity="2">
+        <flat number="1" personsquantity="2" area="42">
+            <registration month="1" year="1984">
+            <coldwater>44.2</coldwater>
+            <hotwater>12.5</hotwater>
+            <electricity>4456</electricity>
+            <gas>78</gas>
+        </registration>
+            <registration month="2" year="1984">
+                <coldwater>64.4</coldwater>
+                <hotwater>22.5</hotwater>
+                <electricity>4756</electricity>
+                <gas>93</gas>
+            </registration>
+
+        </flat>
+        <flat number="2" personsquantity="1" area="60">
+            <registration month="1" year="1984">
+                <coldwater>41.2</coldwater>
+                <hotwater>15.5</hotwater>
+                <electricity>4416</electricity>
+                <gas>12</gas>
+            </registration>
+        </flat>
+    </building>
+
+</housekeeper>
+
+
