@@ -13,7 +13,7 @@ public class Building {
     String street;
 
     @XmlAttribute(name="number")
-    String number;
+    int number;
 
     @XmlAttribute(name="flatsquntity")
     int flatsquntity;

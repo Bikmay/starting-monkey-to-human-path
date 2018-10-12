@@ -3,8 +3,7 @@ package RPIS61.Ivliev.wdad.learn.xml;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
-public class Registration {
-
+public class Tariffs {
     @XmlElement(name = "coldwater")
     double coldwater;
 
@@ -17,18 +16,21 @@ public class Registration {
     @XmlElement(name="gas")
     double gas;
 
-    @XmlAttribute(name = "month")
-    int month;
 
-    @XmlAttribute(name = "year")
-    int year;
 
-    public Registration(double coldwater,double hotwater,double electricity,double gas, int month,int year){
-        this.coldwater=coldwater;
-        this.electricity=electricity;
-        this.hotwater=hotwater;
+    public void setColdwater(double coldwater) {
+        this.coldwater = coldwater;
+    }
+
+    public void setElectricity(double electricity) {
+        this.electricity = electricity;
+    }
+
+    public void setGas(double gas) {
         this.gas = gas;
     }
 
-
+    public void setHotwater(double hotwater) {
+        this.hotwater = hotwater;
+    }
 }
