@@ -17,4 +17,18 @@ public class Flat {
 
     @XmlAttribute(name="area")
     int area;
+
+
+    public Registration getRegistration(int index){
+        return this.registrations.get(index);
+    }
+
+    public Registration getLastRegistration(){
+        return this.registrations.get(registrations.size()-1);
+    }
+
+    public void setNewRegistration(double coldwater,double hotwater,double electricity,double gas, int month,int year){
+        registrations.add(new Registration(coldwater,hotwater,electricity,gas,month,year));
+    }
+
 }

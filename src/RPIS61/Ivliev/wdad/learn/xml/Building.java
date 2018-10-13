@@ -17,4 +17,12 @@ public class Building {
 
     @XmlAttribute(name="flatsquntity")
     int flatsquntity;
+
+
+
+    public Flat getFlat(int index){
+        return this.flats.get(index);
+    }
+
+
 }
