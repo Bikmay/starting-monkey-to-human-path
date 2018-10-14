@@ -4,12 +4,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.*;
 import java.util.List;
 
-@XmlRootElement(name = "gen")
+@XmlRootElement(name = "housekeeper")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Housekeeper {
 
     @XmlElement(name = "tariffs")
@@ -28,30 +31,39 @@ public Housekeeper(){
 
     }
 
-    public double getBill(String street, int buildingNumber,int flatNumber) throws JAXBException, IOException {
-
-        int sum=0;
+    public static Housekeeper getRoot() throws JAXBException, IOException {
         JAXBContext jc = JAXBContext.newInstance(Housekeeper.class);
         InputStream is = new FileInputStream("xmlTask.xml");
         Unmarshaller um = jc.createUnmarshaller();
         Housekeeper root=(Housekeeper)um.unmarshal(is);
+        is.close();
 
+        return root;
+    }
+
+    public double getBill(String street, int buildingNumber,int flatNumber) throws JAXBException, IOException {
+
+        int sum=0;
+
+        Housekeeper root=getRoot();
+        Flat flat;
         for (int i = 0; i <root.buildings.size() ; i++) {
-            if (root.buildings.get(i).street.equals(street) && root.buildings.get(i).number==buildingNumber){
+
                 if(root.buildings.get(i).street.equals(street) && root.buildings.get(i).number==buildingNumber){
-                    for (int j= 0; i <root.buildings.get(i).flats.size() ; j++) {
-                        if(root.buildings.get(i).flats.get(i).number == flatNumber){
-                            sum+=buildings.get(i).getFlat(j).getLastRegistration().coldwater*root.tariffs.coldwater;
-                            sum+=buildings.get(i).getFlat(j).getLastRegistration().electricity*root.tariffs.electricity;
-                            sum+=buildings.get(i).getFlat(j).getLastRegistration().gas*root.tariffs.gas;
-                            sum+=buildings.get(i).getFlat(j).getLastRegistration().hotwater*root.tariffs.hotwater;
+                    for (int j= 0; j <root.buildings.get(i).flats.size() ; j++) {
+                        if(root.buildings.get(i).flats.get(j).number == flatNumber){
+                            flat=buildings.get(i).getFlat(j);
+                            sum+=flat.getMonthSend("coldwater")*root.tariffs.coldwater;
+                            sum+=flat.getMonthSend("electricity")*root.tariffs.electricity;
+                            sum+=flat.getMonthSend("gas")*root.tariffs.gas;
+                            sum+=flat.getMonthSend("hotwater")*root.tariffs.hotwater;
                             return sum;
                         }
                     }
                 }
-            }
+
         }
-        is.close();
+
         return 0;
     }
 
@@ -92,7 +104,8 @@ public Housekeeper(){
     private void writer(Housekeeper root) throws JAXBException, IOException {
         JAXBContext jc= JAXBContext.newInstance(Housekeeper.class);
         Marshaller m = jc.createMarshaller();
-        OutputStream os = new FileOutputStream("text.xml");
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        OutputStream os = new FileOutputStream("xmlTask.xml");
         m.marshal(root,os);
         os.close();
     }
@@ -100,11 +113,19 @@ public Housekeeper(){
     public Flat getFlat(String street,int buildingNumber,int flatNumber){
         for (Building building : buildings) {
             if (building.street.equals(street) && building.number == buildingNumber) {
-                return building.getFlat(flatNumber);
+                return building.findFlat(flatNumber);
             }
         }
         return null;
     }
 
+    public Building getBuilding(String street, int buildingNumber){
+        for (Building building : this.buildings) {
+            if (building.number == buildingNumber && building.street.equals(street)) {
+                return building;
+            }
+        }
+        return null;
+    }
 
 }

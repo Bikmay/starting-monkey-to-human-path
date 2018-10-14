@@ -24,5 +24,13 @@ public class Building {
         return this.flats.get(index);
     }
 
+    public Flat findFlat(int number){
+        for (Flat flat : flats) {
+            if (flat.number == number) {
+                return flat;
+            }
+        }
+        return null;
+    }
 
 }

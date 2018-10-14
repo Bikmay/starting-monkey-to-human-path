@@ -28,6 +28,13 @@ public class Registration {
         this.electricity=electricity;
         this.hotwater=hotwater;
         this.gas = gas;
+
+        this.month=month;
+        this.year=year;
+    }
+
+    public Registration(){
+
     }
 
 

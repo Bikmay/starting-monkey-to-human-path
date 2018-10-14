@@ -1,41 +1,55 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <housekeeper>
-
-
     <tariffs>
-        <coldwater>44.2</coldwater>
-        <hotwater>12.5</hotwater>
-        <electricity>4456</electricity>
-        <gas>78</gas>
+        <coldwater>2.0</coldwater>
+        <electricity>2.0</electricity>
+        <gas>2.0</gas>
+        <hotwater>2.0</hotwater>
     </tariffs>
-
     <building street="Lenin" number="2" flatsquntity="2">
         <flat number="1" personsquantity="2" area="42">
             <registration month="1" year="1984">
-            <coldwater>44.2</coldwater>
-            <hotwater>12.5</hotwater>
-            <electricity>4456</electricity>
-            <gas>78</gas>
-        </registration>
+                <coldwater>44.2</coldwater>
+                <hotwater>12.5</hotwater>
+                <electricity>4456.0</electricity>
+                <gas>78.0</gas>
+            </registration>
             <registration month="2" year="1984">
                 <coldwater>64.4</coldwater>
                 <hotwater>22.5</hotwater>
-                <electricity>4756</electricity>
-                <gas>93</gas>
+                <electricity>4756.0</electricity>
+                <gas>93.0</gas>
             </registration>
-
         </flat>
         <flat number="2" personsquantity="1" area="60">
             <registration month="1" year="1984">
-                <coldwater>41.2</coldwater>
-                <hotwater>15.5</hotwater>
-                <electricity>4416</electricity>
-                <gas>12</gas>
+                <coldwater>64.4</coldwater>
+                <hotwater>22.5</hotwater>
+                <electricity>4756.0</electricity>
+                <gas>93.0</gas>
             </registration>
         </flat>
     </building>
-
+    <building street="Panova" number="64" flatsquntity="0">
+        <flat number="98" personsquantity="1" area="60">
+            <registration month="1" year="2018">
+                <coldwater>64.4</coldwater>
+                <hotwater>22.5</hotwater>
+                <electricity>4756.0</electricity>
+                <gas>93.0</gas>
+            </registration>
+            <registration month="3" year="2018">
+                <coldwater>23.0</coldwater>
+                <hotwater>23.0</hotwater>
+                <electricity>23.0</electricity>
+                <gas>23.0</gas>
+            </registration>
+            <registration month="4" year="2018">
+                <coldwater>24.0</coldwater>
+                <hotwater>24.0</hotwater>
+                <electricity>24.0</electricity>
+                <gas>24.0</gas>
+            </registration>
+        </flat>
+    </building>
 </housekeeper>
-
-
